@@ -87,15 +87,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     print("/---------------")
                 }
             }
-        }
-        
-        if editingStyle == .delete {
-            // データベースから削除する
-            try! realm.write {
-                self.realm.delete(self.taskArray[indexPath.row])
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-        }
+        }        
     }
     
     // 入力画面から戻ってきた時に TableView を更新させる
