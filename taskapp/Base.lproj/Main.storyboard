@@ -118,21 +118,38 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95p-2d-APS">
+                                <rect key="frame" x="10" y="464" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BWW-EN-YaM">
+                                <rect key="frame" x="10" y="495" width="394" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lnd-xQ-s5c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="95p-2d-APS" firstAttribute="leading" secondItem="lnd-xQ-s5c" secondAttribute="leading" constant="10" id="0YN-y9-gTV"/>
                             <constraint firstItem="HMi-3C-tuD" firstAttribute="leading" secondItem="lnd-xQ-s5c" secondAttribute="leading" constant="10" id="BQf-Wp-Pgs"/>
                             <constraint firstItem="r0m-jN-9wN" firstAttribute="top" secondItem="HMi-3C-tuD" secondAttribute="bottom" constant="10" id="Hfq-b8-bZg"/>
                             <constraint firstItem="lnd-xQ-s5c" firstAttribute="trailing" secondItem="ltp-kA-jgh" secondAttribute="trailing" constant="10" id="LWe-xy-wyl"/>
                             <constraint firstItem="BW5-Qm-1u2" firstAttribute="leading" secondItem="lnd-xQ-s5c" secondAttribute="leading" id="MZc-cD-2ta"/>
                             <constraint firstItem="sME-si-TiE" firstAttribute="leading" secondItem="lnd-xQ-s5c" secondAttribute="leading" constant="10" id="N8v-cO-qMg"/>
+                            <constraint firstItem="lnd-xQ-s5c" firstAttribute="trailing" secondItem="95p-2d-APS" secondAttribute="trailing" constant="10" id="PUB-rq-LXP"/>
                             <constraint firstItem="lnd-xQ-s5c" firstAttribute="trailing" secondItem="BW5-Qm-1u2" secondAttribute="trailing" id="RTi-e6-8Lr"/>
                             <constraint firstItem="ltp-kA-jgh" firstAttribute="top" secondItem="r0m-jN-9wN" secondAttribute="bottom" constant="10" id="V6f-km-aaC"/>
+                            <constraint firstItem="lnd-xQ-s5c" firstAttribute="trailing" secondItem="BWW-EN-YaM" secondAttribute="trailing" constant="10" id="cN5-Nm-aa2"/>
                             <constraint firstItem="ltp-kA-jgh" firstAttribute="leading" secondItem="lnd-xQ-s5c" secondAttribute="leading" constant="10" id="cXC-rn-pBa"/>
                             <constraint firstItem="lnd-xQ-s5c" firstAttribute="trailing" secondItem="sME-si-TiE" secondAttribute="trailing" constant="10" id="eaa-Xq-2Cl"/>
+                            <constraint firstItem="BWW-EN-YaM" firstAttribute="top" secondItem="95p-2d-APS" secondAttribute="bottom" constant="10" id="ksj-2h-kDp"/>
                             <constraint firstItem="lnd-xQ-s5c" firstAttribute="trailing" secondItem="HMi-3C-tuD" secondAttribute="trailing" constant="10" id="l3Y-Kf-YKG"/>
+                            <constraint firstItem="95p-2d-APS" firstAttribute="top" secondItem="BW5-Qm-1u2" secondAttribute="bottom" constant="10" id="q48-tf-3bh"/>
                             <constraint firstItem="HMi-3C-tuD" firstAttribute="top" secondItem="sME-si-TiE" secondAttribute="bottom" constant="10" id="rmx-sq-icm"/>
+                            <constraint firstItem="BWW-EN-YaM" firstAttribute="leading" secondItem="lnd-xQ-s5c" secondAttribute="leading" constant="10" id="t9q-dN-xEb"/>
                             <constraint firstItem="BW5-Qm-1u2" firstAttribute="top" secondItem="ltp-kA-jgh" secondAttribute="bottom" constant="10" id="tAe-Gw-FzI"/>
                             <constraint firstItem="r0m-jN-9wN" firstAttribute="leading" secondItem="lnd-xQ-s5c" secondAttribute="leading" constant="10" id="tNE-2G-FQI"/>
                             <constraint firstItem="lnd-xQ-s5c" firstAttribute="trailing" secondItem="r0m-jN-9wN" secondAttribute="trailing" constant="10" id="z2v-aL-bmU"/>
@@ -141,6 +158,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="AZJ-gS-rmg"/>
                     <connections>
+                        <outlet property="categoryTextField" destination="BWW-EN-YaM" id="oIK-Kz-yjh"/>
                         <outlet property="contentsTextView" destination="ltp-kA-jgh" id="BCU-Q7-XOB"/>
                         <outlet property="datePicker" destination="BW5-Qm-1u2" id="pEz-32-BqV"/>
                         <outlet property="titleTextField" destination="HMi-3C-tuD" id="ko4-D3-VZl"/>
