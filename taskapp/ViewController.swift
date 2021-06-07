@@ -9,9 +9,10 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // Realmインスタンスを取得する
     let realm = try! Realm()
@@ -20,15 +21,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // 日付の近い順でソート：昇順
     // 移行内容をアップデートするとリスト内は自動的に更新される。
     var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: true)
-    
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
+        // 何も入力されていなくともReturnキーを打てるようにする
+        searchBar.enablesReturnKeyAutomatically = false
     }
-
+    
     // データの数（＝セルの数）を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return taskArray.count
@@ -87,7 +90,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     print("/---------------")
                 }
             }
-        }        
+        }
+    }
+    
+    // 検索ボタン押下時に呼ばれるメソッド
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+//        let searchText = searchBar.text
+        guard let searchText = searchBar.text else {return}
+        // 条件として検索時文字列がcategoryと一致するものを検索
+        let result = realm.objects(Task.self).filter("category BEGINSWITH '\(searchText)'")
+        // 検索結果の件数を取得
+        let count = result.count
+        // 検索結果を反映
+        if count == 0 {
+            taskArray = realm.objects(Task.self)
+        } else {
+            taskArray = result
+        }
+        tableView.reloadData()
     }
     
     // 入力画面から戻ってきた時に TableView を更新させる
