@@ -98,12 +98,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         searchBar.endEditing(true)
 //        let searchText = searchBar.text
         guard let searchText = searchBar.text else {return}
-        // 条件として検索時文字列がcategoryと一致するものを検索
-        let result = realm.objects(Task.self).filter("category BEGINSWITH '\(searchText)'")
-        // 検索結果の件数を取得
-        let count = result.count
+        // 条件として検索時文字列がcategoryと完全一致するものを検索
+        let result = realm.objects(Task.self).filter("category == '\(searchText)'")
+//        // 検索結果の件数を取得
+//        let count = result.count
+        
         // 検索結果を反映
-        if count == 0 {
+        if searchText == "" {
             taskArray = realm.objects(Task.self)
         } else {
             taskArray = result
